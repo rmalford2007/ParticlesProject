@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/****************************************
+ * Throughout many of my projects I end up using some sort of 
+ * stat class to track linear items like health, armor, lives, 
+ * score, and more.I expose event delegate functions to allow 
+ * other objects to subscribe and "watch" them for changes.
+ * *************************************/
+
 public delegate void StatInteractionHandler(Stat s);
 
 public class Stat : MonoBehaviour
@@ -24,7 +31,7 @@ public class Stat : MonoBehaviour
             return 0.0f;
     }
 
-    //Stat has changed, if there are events stored, then call them
+    //Stat has changed, if there are subscribers, notify them
     public virtual void OnStatChanged()
     {
         if (StatChanged != null)
